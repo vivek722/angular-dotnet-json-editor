@@ -1,0 +1,47 @@
+<h2>Detailed View</h2>
+
+<div class="container">
+  <!-- LEFT PANEL (Timestamp List) -->
+  <div class="left">
+    <ul>
+      <li *ngFor="let item of observation?.datas" 
+          [class.active]="item === selectedItem"
+          (click)="selectItem(item)">
+        {{ item.samplingTime }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- RIGHT PANEL (Dynamic Form) -->
+  <div class="right" *ngIf="selectedItem">
+    <form [formGroup]="form">
+      <div class="form-row" *ngFor="let prop of selectedItem.properties; let i = index">
+        <label>{{ prop.label }}</label>
+
+        <!-- Type Detection Logic -->
+        <ng-container [ngSwitch]="prop  ">
+          
+          <!-- Textbox -->
+          <input *ngSwitchCase="'text'" type="text" [formControlName]="'prop' + i" />
+
+          <!-- Number -->
+          <input *ngSwitchCase="'number'" type="number" [formControlName]="'prop' + i" />
+
+          <!-- Checkbox -->
+          <input *ngSwitchCase="'checkbox'" type="checkbox" [formControlName]="'prop' + i" />
+
+          <!-- Number with Suffix -->
+          <div *ngSwitchCase="'km'" class="with-suffix">
+            <input type="number" [formControlName]="'prop' + i" />
+            <span>KM</span>
+          </div>
+
+          <!-- Default to Text -->
+          <input *ngSwitchDefault type="text" [formControlName]="'prop' + i" />
+
+        </ng-container>
+      </div>
+    </form>
+    <button class="save-btn" (click)="save()">Save</button>
+  </div>
+</div>
