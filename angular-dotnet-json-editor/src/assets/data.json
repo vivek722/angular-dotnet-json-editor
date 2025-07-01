@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "name": "New Observation",
+  "datas": [
+    {
+      "samplingTime": "2021-04-21T11:00:05.5051255+05:30",
+      "properties": [
+        { "value": "Road Construction 1", "label": "Project Name" },
+        { "value": 40, "label": "Construction Count" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid black;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Sidebar */
+.left {
+  width: 40%;
+  border-right: 2px solid black;
+  background: #f2f2f2;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.left ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.left li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+.left li:hover {
+  background-color: #eaeaea;
+}
+
+/* Right form area */
+.right {
+  flex-grow: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.right label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.right input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.right button {
+  padding: 10px 20px;
+  border: 2px solid black;
+  background: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Responsive: stack on small screen */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid black;
+  }
+
+  .right {
+    padding: 15px;
+  }
+}
